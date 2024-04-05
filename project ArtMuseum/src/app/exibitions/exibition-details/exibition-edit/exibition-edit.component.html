@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div class="row" style="margin-top: 20px">
+        <div class="col-10">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Author"
+            [formControl]="searchInput"
+            (input)="onSearchClicked()"
+          />
+          <!-- na svako kucanje se promeni rezultat -->
+        </div>
+        <div class="col-2">
+          <button class="btn btn-dark" (click)="onSearchClicked()">
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <button
+        class="btn btn-dark float-end"
+        style="margin: 20px"
+        (click)="onDoneClicked()"
+      >
+        Done
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <!--TABELA SVIH DELA-->
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let artwork of allArtworks">
+            <td>{{ artwork.title }}</td>
+            <td>{{ artwork.author }}</td>
+            <td>
+              <button class="btn btn-dark" (click)="onAddClicked(artwork)">
+                Add
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-6">
+      <!--TABELA IZLOZENIH DELA-->
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let artwork of exibitionArtworks">
+            <td>{{ artwork.title }}</td>
+            <td>{{ artwork.author }}</td>
+            <td>
+              <button class="btn btn-dark" (click)="onRemoveClicked(artwork)">
+                Remove
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
